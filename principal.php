@@ -1,52 +1,45 @@
 <?php
-echo password_hash("123456", PASSWORD_BCRYPT);
-
 include 'conexion.inc.php';
+
+session_start();
+$usuario = $_SESSION['usuario'] ?? 'msilva'; // usuario de prueba por ahora
 $flujo = $_GET['flujo'] ?? 'F1';
 $proceso = $_GET['proceso'] ?? 'P1';
+$numero_tramite = $_GET['numero_tramite'] ?? 3001;
 
-
-$sql = "SELECT * FROM flujo_proceso WHERE flujo = '$flujo' AND proceso = '$proceso'";
-$resultado = mysqli_query($con, $sql);
+// Obtener datos del proceso
+$sql = "SELECT * FROM workflow_proyecto.flujo_proceso WHERE flujo = '$flujo' AND proceso = '$proceso'";
+$resultado = mysqli_query($conexion_workflow, $sql);
 $fila = mysqli_fetch_array($resultado);
 
-$pantalla = $fila['pantalla'];
-$pantalla = "pantallas/" . $pantalla . ".inc.php";
-
-$pantalla_main = $fila['pantalla'];
-$pantalla_main = "pantallas/" . $pantalla_main . ".main.inc.php";
-
-$proceso_anterior = $proceso;
+$pantalla = "procesos/" . $fila['pantalla'] . ".inc.php";
+$pantalla_main = "procesos/" . $fila['pantalla'] . ".main.inc.php";
 $proceso_siguiente = $fila['proceso_siguiente'];
-
-include $pantalla_main;
-
-echo $pantalla;
+$proceso_anterior = $proceso;
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema de Registro de Becas</title>
+    <title>Sistema de Becas - Flujo</title>
 </head>
-
 <body>
-    <h1>Index Inicio</h1>
+    <h1>Sistema de Becas</h1>
+
     <form action="motor.php" method="get">
         <input type="hidden" name="flujo" value="<?php echo $flujo; ?>">
         <input type="hidden" name="proceso" value="<?php echo $proceso_siguiente; ?>">
         <input type="hidden" name="proceso_anterior" value="<?php echo $proceso_anterior; ?>">
-        <?php
-        include $pantalla;
-        ?>
+        <input type="hidden" name="numero_tramite" value="<?php echo $numero_tramite; ?>">
+
+        <?php include $pantalla_main; ?>
+        <?php include $pantalla; ?>
+
         <div>
-            <button type="submit">Atras</button>
-            <button type="submit">Siguiente</button>
+            <button type="submit" name="anterior">Atrás</button>
+            <button type="submit" name="siguiente">Siguiente</button>
         </div>
     </form>
 </body>
-
 </html>

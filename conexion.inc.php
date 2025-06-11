@@ -1,4 +1,7 @@
 <?php
-$con = mysqli_connect("localhost", "root", "", "");
-mysqli_select_db($con, "workflow_proyecto");
+// Conexión a workflow_proyecto
+$conexion_workflow = mysqli_connect("localhost", "root", "", "workflow_proyecto");
+
+// Conexión a sistema_proyecto
+$conexion_sistema = mysqli_connect("localhost", "root", "", "sistema_proyecto");
 ?>
