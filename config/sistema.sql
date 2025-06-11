@@ -179,3 +179,32 @@ ALTER TABLE aplicacion
 ADD COLUMN tipo_beca VARCHAR(100) DEFAULT NULL,
 ADD COLUMN motivo TEXT DEFAULT NULL,
 ADD COLUMN monto_solicitado DECIMAL(10,2) DEFAULT NULL;
+
+
+
+
+
+INSERT INTO estudiante (
+    codigo_estudiante,
+    nombre,
+    apellido,
+    dni,
+    correo,
+    telefono,
+    direccion,
+    carrera,
+    ciclo_academico,
+    usuario,
+    contrasena
+)
+VALUES
+('20231003', 'Lucía', 'Mendoza', '11223344', 'lucia.mendoza@universidad.edu', '911223344', 'Av. América 789', 'Contabilidad', 6, 'lmendoza', '$2y$10$LBYeTJEJMxCAGmf5psr2SOIqf8uHU0JrB4pqs4QLWMtZHzHxw0iKO'),
+('20231004', 'Marco', 'Vargas', '22334455', 'marco.vargas@universidad.edu', '922334455', 'Jr. Arequipa 321', 'Derecho', 7, 'mvargas', '$2y$10$LBYeTJEJMxCAGmf5psr2SOIqf8uHU0JrB4pqs4QLWMtZHzHxw0iKO'),
+('20231005', 'Elena', 'Quispe', '33445566', 'elena.quispe@universidad.edu', '933445566', 'Av. Brasil 654', 'Psicología', 3, 'equispe', '$2y$10$LBYeTJEJMxCAGmf5psr2SOIqf8uHU0JrB4pqs4QLWMtZHzHxw0iKO'),
+('20231006', 'Luis', 'Cruz', '44556677', 'luis.cruz@universidad.edu', '944556677', 'Calle Puno 777', 'Economía', 2, 'lcruz', '$2y$10$LBYeTJEJMxCAGmf5psr2SOIqf8uHU0JrB4pqs4QLWMtZHzHxw0iKO'),
+('20231007', 'Valeria', 'Ríos', '55667788', 'valeria.rios@universidad.edu', '955667788', 'Av. Perú 111', 'Ingeniería Civil', 8, 'vrios', '$2y$10$LBYeTJEJMxCAGmf5psr2SOIqf8uHU0JrB4pqs4QLWMtZHzHxw0iKO'),
+('20231008', 'Diego', 'Salazar', '66778899', 'diego.salazar@universidad.edu', '966778899', 'Pasaje Libertad 22', 'Arquitectura', 5, 'dsalazar', '$2y$10$LBYeTJEJMxCAGmf5psr2SOIqf8uHU0JrB4pqs4QLWMtZHzHxw0iKO'),
+('20231009', 'Andrea', 'Lopez', '77889900', 'andrea.lopez@universidad.edu', '977889900', 'Av. Santa Cruz 88', 'Comunicación', 6, 'alopez', '$2y$10$LBYeTJEJMxCAGmf5psr2SOIqf8uHU0JrB4pqs4QLWMtZHzHxw0iKO'),
+('20231010', 'Fernando', 'Gómez', '88990011', 'fernando.gomez@universidad.edu', '988990011', 'Jr. Tarapacá 999', 'Medicina', 4, 'fgomez', '$2y$10$LBYeTJEJMxCAGmf5psr2SOIqf8uHU0JrB4pqs4QLWMtZHzHxw0iKO'),
+('20231011', 'Paula', 'Huanca', '99001122', 'paula.huanca@universidad.edu', '999001122', 'Calle Los Pinos 18', 'Educación Inicial', 3, 'phuanca', '$2y$10$LBYeTJEJMxCAGmf5psr2SOIqf8uHU0JrB4pqs4QLWMtZHzHxw0iKO'),
+('20231012', 'Renzo', 'Ticona', '10111213', 'renzo.ticona@universidad.edu', '910111213', 'Av. La Cultura 456', 'Ingeniería Ambiental', 7, 'rticona', '$2y$10$LBYeTJEJMxCAGmf5psr2SOIqf8uHU0JrB4pqs4QLWMtZHzHxw0iKO');

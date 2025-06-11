@@ -14,4 +14,36 @@
 
     <label for="observaciones">Observaciones:</label>
     <textarea name="observaciones" id="observaciones"><?= htmlspecialchars($app['observaciones'] ?? '') ?></textarea>
-</div> 
+</div>
+<script>
+// Save inputs to sessionStorage on change
+['tipo_beca','motivo','monto_solicitado','observaciones'].forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el) {
+        el.addEventListener('input', function() {
+            sessionStorage.setItem(id, el.value);
+        });
+        // Restore from sessionStorage if available
+        if (sessionStorage.getItem(id)) {
+            el.value = sessionStorage.getItem(id);
+        }
+    }
+});
+// On Siguiente, send data to PHP session
+window.addEventListener('DOMContentLoaded', function() {
+    var formInputs = ['tipo_beca','motivo','monto_solicitado','observaciones'];
+    var siguienteBtn = document.querySelector('button[name="siguiente"]');
+    if (siguienteBtn) {
+        siguienteBtn.addEventListener('click', function(e) {
+            var data = {};
+            formInputs.forEach(function(id) {
+                data[id] = document.getElementById(id).value;
+            });
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', 'procesos/save_beca_session.php', false); // sync to ensure session is set before navigation
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.send(JSON.stringify(data));
+        });
+    }
+});
+</script> 
