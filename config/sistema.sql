@@ -128,12 +128,13 @@ VALUES
 
 CREATE TABLE aplicacion (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    numero_tramite INT NOT NULL UNIQUE,             -- identificador del trámite
+    numero_tramite INT,             -- identificador del trámite
     estudiante_id INT NOT NULL,                     -- referencia al estudiante
     beca_id INT,                                     -- opcional: si hay múltiples becas
     fecha_postulacion DATETIME DEFAULT CURRENT_TIMESTAMP,
     estado VARCHAR(20) DEFAULT 'en_proceso',         -- en_proceso, enviado, evaluado, aprobado, rechazado
     observaciones TEXT,
+    fecha_aprobacion DATETIME DEFAULT NULL,
 
     FOREIGN KEY (estudiante_id) REFERENCES estudiante(id)
     -- Puedes agregar FOREIGN KEY (beca_id) si creas una tabla beca

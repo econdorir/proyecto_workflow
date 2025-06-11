@@ -7,6 +7,16 @@ $flujo = $_GET['flujo'] ?? 'F1';
 $proceso = $_GET['proceso'] ?? 'P1';
 $numero_tramite = $_GET['numero_tramite'] ?? 3001;
 
+// Insert into flujo_proceso_seguimiento if not already present for this step
+$date = date('Y-m-d');
+$time = date('H:i:s');
+$sql_check = "SELECT * FROM flujo_proceso_seguimiento WHERE flujo='$flujo' AND proceso='$proceso' AND numero_tramite='$numero_tramite' AND usuario='$usuario' AND fecha_fin IS NULL";
+$res_check = mysqli_query($conexion_workflow, $sql_check);
+if (mysqli_num_rows($res_check) == 0) {
+    $sql_insert = "INSERT INTO flujo_proceso_seguimiento (flujo, proceso, numero_tramite, usuario, fecha_inicio, hora_inicio) VALUES ('$flujo', '$proceso', '$numero_tramite', '$usuario', '$date', '$time')";
+    mysqli_query($conexion_workflow, $sql_insert);
+}
+
 // Obtener datos del proceso
 $sql = "SELECT * FROM workflow_proyecto.flujo_proceso WHERE flujo = '$flujo' AND proceso = '$proceso'";
 $resultado = mysqli_query($conexion_workflow, $sql);

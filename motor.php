@@ -29,6 +29,12 @@ if (isset($_GET['anterior'])) {
     }
 }
 
+// Update flujo_proceso_seguimiento with fecha_fin and hora_fin for the completed process
+$date = date('Y-m-d');
+$time = date('H:i:s');
+$sql_update = "UPDATE flujo_proceso_seguimiento SET fecha_fin='$date', hora_fin='$time' WHERE flujo='$flujo' AND proceso='$proceso' AND numero_tramite='$numero_tramite' AND usuario='$usuario' AND fecha_fin IS NULL";
+mysqli_query($conexion_workflow, $sql_update);
+
 // TODO: agregar condición condicional si el proceso actual tiene bifurcación
 
 header("Location: principal.php?flujo=$flujo&proceso=$proceso_siguiente&numero_tramite=$numero_tramite");
