@@ -27,9 +27,9 @@ $proceso_anterior = $proceso;
 <body>
     <h1>Sistema de Becas</h1>
 
-    <form action="motor.php" method="get">
+    <form id="workflowForm" action="motor.php" method="get">
         <input type="hidden" name="flujo" value="<?php echo $flujo; ?>">
-        <input type="hidden" name="proceso" value="<?php echo $proceso_siguiente; ?>">
+        <input type="hidden" name="proceso" id="procesoInput" value="">
         <input type="hidden" name="proceso_anterior" value="<?php echo $proceso_anterior; ?>">
         <input type="hidden" name="numero_tramite" value="<?php echo $numero_tramite; ?>">
 
@@ -37,9 +37,21 @@ $proceso_anterior = $proceso;
         <?php include $pantalla; ?>
 
         <div>
-            <button type="submit" name="anterior">Atrás</button>
-            <button type="submit" name="siguiente">Siguiente</button>
+            <button type="submit" name="anterior" id="atrasBtn">Atrás</button>
+            <button type="submit" name="siguiente" id="siguienteBtn">Siguiente</button>
         </div>
     </form>
+    <script>
+        const procesoSiguiente = "<?php echo $proceso_siguiente; ?>";
+        const procesoActual = "<?php echo $proceso_anterior; ?>";
+        document.getElementById('atrasBtn').addEventListener('click', function() {
+            document.getElementById('procesoInput').value = procesoActual;
+        });
+        document.getElementById('siguienteBtn').addEventListener('click', function() {
+            document.getElementById('procesoInput').value = procesoSiguiente;
+        });
+        // Set default for Siguiente (in case user presses Enter)
+        document.getElementById('procesoInput').value = procesoSiguiente;
+    </script>
 </body>
 </html>
