@@ -1,7 +1,6 @@
 <?php
 session_start();
-include 'conexion.inc.php'; // conexión a workflow_proyecto
-include '../conexion.inc.php'; // nueva conexión a sistema_proyecto
+include '../conexion.inc.php'; // conexión a workflow_proyecto
 
 $usuario = $_GET['usuario'] ?? '';
 $contrasena = $_GET['contrasena'] ?? '';
