@@ -4,7 +4,8 @@ echo password_hash("123456", PASSWORD_BCRYPT);
 include 'conexion.inc.php';
 $flujo = $_GET['flujo'] ?? 'F1';
 $proceso = $_GET['proceso'] ?? 'P1';
-// get database
+
+
 $sql = "SELECT * FROM flujo_proceso WHERE flujo = '$flujo' AND proceso = '$proceso'";
 $resultado = mysqli_query($con, $sql);
 $fila = mysqli_fetch_array($resultado);
@@ -29,11 +30,11 @@ echo $pantalla;
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Sistema de Registro de Becas</title>
 </head>
 
 <body>
-    <h1>Index</h1>
+    <h1>Index Inicio</h1>
     <form action="motor.php" method="get">
         <input type="hidden" name="flujo" value="<?php echo $flujo; ?>">
         <input type="hidden" name="proceso" value="<?php echo $proceso_siguiente; ?>">

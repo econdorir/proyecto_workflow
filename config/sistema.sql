@@ -136,21 +136,3 @@ CREATE TABLE flujo_proceso (
     PRIMARY KEY (flujo, proceso)
 );
 
-INSERT INTO FlujoProceso (flujo, proceso, proceso_siguiente, tipo, pantalla, rol) VALUES
-('F1', 'P1',  'P2',  'I', 'inicio',                'estudiante'),
-('F1', 'P2',  'P3',  'P', 'nueva_entrega',         'estudiante'),
-('F1', 'P3',  'P4',  'P', 'form_beca',             'estudiante'),
-('F1', 'P4',  'P5',  'P', 'enviar_beca',           'estudiante'),
-('F1', 'P5',  'P6',  'P', 'verificar_documentos',  'administrador'),
-('F1', 'P6',  NULL,  'C', 'aprobar_beca',          'administrador'),
-('F1', 'P7',  'P8',  'P', 'seleccionar',           'administrador'),
-('F1', 'P8',  'P9',  'P', 'enviar_seleccion',      'administrador'),
-('F1', 'P9',  'P10', 'P', 'crear_item',            'evaluador'),
-('F1', 'P10', 'P11', 'P', 'form_item',             'evaluador'),
-('F1', 'P11', 'P12', 'P', 'guardar_item',          'evaluador'),
-('F1', 'P12', NULL,  'C', 'cambiar_item',          'evaluador'),
-('F1', 'P13', 'P15', 'P', 'estado_aprobado',       'evaluador'),
-('F1', 'P14', 'P15', 'P', 'estado_desaprobado',    'administrador'),
-('F1', 'P15', 'P16', 'P', 'guardar_fecha',         'evaluador'),
-('F1', 'P16', NULL,  'S', 'anuncio',               'estudiante');
-
