@@ -10,4 +10,4 @@ $resultado = mysqli_query($conexion_sistema, $sql);
 $fila = mysqli_fetch_assoc($resultado);
 
 $nombre_completo = $fila['nombre_completo'];
-?>
+?> 

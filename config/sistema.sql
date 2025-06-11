@@ -173,3 +173,9 @@ VALUES
 (2, 'DNI Escaneado', 'Documento de identidad válido', 'dni_jose.pdf', '/uploads/3002/dni_jose.pdf', 'aprobado', NULL),
 (2, 'Recibo de agua', 'Comprobante de servicios para evaluación socioeconómica', 'agua_jose.pdf', '/uploads/3002/agua_jose.pdf', 'aprobado', NULL),
 (2, 'Declaración jurada', 'Declaración jurada de ingresos', 'declaracion_jose.pdf', '/uploads/3002/declaracion_jose.pdf', 'rechazado', 'Documento ilegible');
+
+
+ALTER TABLE aplicacion
+ADD COLUMN tipo_beca VARCHAR(100) DEFAULT NULL,
+ADD COLUMN motivo TEXT DEFAULT NULL,
+ADD COLUMN monto_solicitado DECIMAL(10,2) DEFAULT NULL;
