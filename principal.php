@@ -5,7 +5,7 @@ session_start();
 $usuario = $_SESSION['usuario']; // usuario de prueba por ahora
 $flujo = $_GET['flujo'];
 $proceso = $_GET['proceso'];
-$numero_tramite = $_GET['numero_tramite'];
+$numero_tramite = $_GET['numero_tramite'] ?? '3000';
 
 // Insert into flujo_proceso_seguimiento if not already present for this step
 $date = date('Y-m-d');

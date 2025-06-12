@@ -1,5 +1,5 @@
 <?php
-include 'conexion.inc.php';
+include './conexion.inc.php';
 session_start();
 
 // Use the logged-in user
@@ -33,7 +33,7 @@ $resultado = mysqli_query($conexion_workflow, $sql);
         <button class="btn" onclick="mostrarNuevoFlujo()">+ Nuevo</button>
         <a href="./login.php" class="btn">Cerrar Sesión</a>
     </div>
-    <form id="nuevoFlujoForm" action="./procesos/inicio.inc.php" method="post">
+    <form id="nuevoFlujoForm" action="./principal.php" method="post">
         <label for="flujo">Seleccione el flujo a iniciar:</label>
         <select name="flujo" id="flujo" required>
             <?php if ($rol === 'estudiante'): ?>

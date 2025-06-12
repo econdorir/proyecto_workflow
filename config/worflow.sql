@@ -41,15 +41,44 @@ INSERT INTO flujo_proceso (flujo, proceso, proceso_siguiente, tipo, pantalla, ro
 ('F1', 'P12', 'P13', 'P', 'guardar_fecha',       'evaluador'),
 ('F1', 'P13', NULL,  'S', 'anuncio',             'estudiante');
 
+INSERT INTO flujo_proceso (flujo, proceso, proceso_siguiente, tipo, pantalla, rol) VALUES
+('F2', 'P1', 'P2', 'I', 'inicio', 'administrador'),
+('F2', 'P2', 'P3', 'P', 'nombre_convocatoria', 'administrador'),
+('F2', 'P3', 'P4', 'P', 'form_convocatoria', 'administrador'),
+('F2', 'P4', 'P5', 'P', 'confirmar_convocatoria', 'administrador'),
+('F2', 'P5', NULL,  'C', 'aprobar_convocatoria', 'administrador'),
+('F2', 'P6', NULL,  'S', 'anuncio_convocatoria', 'estudiante');
+
+
+
 
 INSERT INTO flujo_proceso_condicionante (flujo, proceso, proceso_si, proceso_no) VALUES
 ('F1', 'P6',  'P7',  'P11');
 
+INSERT INTO flujo_proceso_condicionante (flujo, proceso, proceso_si, proceso_no) VALUES
+('F2', 'P5',  'P6',  'P3');
+
+
 INSERT INTO flujo_proceso_seguimiento (flujo, proceso, numero_tramite, usuario, fecha_inicio, hora_inicio, fecha_fin, hora_fin) VALUES
-('F1', 'P1', 2001, 'juanperez',    '2025-06-01', '09:00:00', '2025-06-01', '10:30:00'),
-('F1', 'P2', 2001, 'juanperez',    '2025-06-01', '10:31:00', NULL,        NULL),      
-('F1', 'P1', 2002, 'mariasoto',    '2025-06-05', '14:00:00', '2025-06-05', '14:45:00'),
-('F1', 'P2', 2002, 'mariasoto',    '2025-06-05', '14:46:00', '2025-06-06', '09:15:00'),
-('F1', 'P3', 2002, 'mariasoto',    '2025-06-06', '09:16:00', NULL,        NULL),      
-('F1', 'P1', 2003, 'jorgelopez',   '2025-06-10', '08:00:00', NULL,        NULL),      
-('F1', 'P2', 2003, 'jorgelopez',   '2025-06-10', '09:00:00', NULL,        NULL);
+('F1', 'P1', 3001, 'juanperez',    '2025-06-01', '09:00:00', '2025-06-01', '10:30:00'),
+('F1', 'P2', 3001, 'juanperez',    '2025-06-01', '10:31:00', NULL,        NULL),      
+('F1', 'P1', 3002, 'mariasoto',    '2025-06-05', '14:00:00', '2025-06-05', '14:45:00'),
+('F1', 'P2', 3002, 'mariasoto',    '2025-06-05', '14:46:00', '2025-06-06', '09:15:00'),
+('F1', 'P3', 3002, 'mariasoto',    '2025-06-06', '09:16:00', NULL,        NULL),      
+('F1', 'P1', 3003, 'jorgelopez',   '2025-06-10', '08:00:00', NULL,        NULL),      
+('F1', 'P2', 3003, 'jorgelopez',   '2025-06-10', '09:00:00', NULL,        NULL);
+
+
+INSERT INTO flujo_proceso_seguimiento (flujo, proceso, numero_tramite, usuario, fecha_inicio, hora_inicio, fecha_fin, hora_fin) VALUES
+('F2', 'P1', 5001, 'admin1',       '2025-06-01', '08:00:00', '2025-06-01', '08:20:00'),
+('F2', 'P2', 5001, 'admin1',       '2025-06-01', '08:21:00', '2025-06-01', '08:40:00'),
+('F2', 'P3', 5001, 'admin1',       '2025-06-01', '08:41:00', '2025-06-01', '09:00:00'),
+('F2', 'P4', 5001, 'admin1',       '2025-06-01', '09:01:00', NULL,        NULL),
+
+('F2', 'P1', 5002, 'admin2',       '2025-06-05', '10:00:00', '2025-06-05', '10:15:00'),
+('F2', 'P2', 5002, 'admin2',       '2025-06-05', '10:16:00', '2025-06-05', '10:40:00'),
+('F2', 'P3', 5002, 'admin2',       '2025-06-05', '10:41:00', '2025-06-05', '11:00:00'),
+('F2', 'P4', 5002, 'admin2',       '2025-06-05', '11:01:00', '2025-06-05', '11:30:00'),
+('F2', 'P5', 5002, 'admin2',       '2025-06-05', '11:31:00', NULL,        NULL),
+
+('F2', 'P6', 5003, 'lauragomez',   '2025-06-06', '15:00:00', NULL,        NULL);  -- estudiante viendo el anuncio
