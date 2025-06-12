@@ -33,4 +33,5 @@ window.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
-</script> 
+</script>
+<input type="hidden" name="proceso_anterior" value="<?php echo $proceso_anterior; ?>"> 
