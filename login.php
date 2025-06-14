@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $usuario = $_POST['usuario'] ?? '';
     $contrasena = $_POST['contrasena'] ?? '';
     $tipo_usuario = $_POST['tipo_usuario'] ?? '';
-
+    
     // Definir la tabla según el tipo de usuario
     $tablas = [
         'estudiante' => 'estudiante',
@@ -32,7 +32,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['usuario'] = $usuario;
             $_SESSION['rol'] = $tipo_usuario;
             $_SESSION['id'] = $fila['id'] ?? null;
-            header('Location: bandeja_entrada.php');
+
+            if($_SESSION['rol'] == 'administrador'){
+                header('Location: bandeja_entrada_admin.php');
+            } else {
+                header('Location: bandeja_entrada.php');
+            }
             exit;
         }
         $error = 'Usuario o contraseña incorrectos.';
@@ -66,7 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <option value="">Seleccione...</option>
             <option value="estudiante">Estudiante</option>
             <option value="administrador">Administrador</option>
-            <option value="evaluador">Evaluador</option>
+            <!-- <option value="evaluador">Evaluador</option> -->
         </select>
 
         <button type="submit" style="margin-top: 22px;">Iniciar Sesión</button>

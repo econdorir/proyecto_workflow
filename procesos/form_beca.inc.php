@@ -4,13 +4,13 @@
 <div>
     <h3>Formulario de Solicitud de Beca</h3>
     <label for="tipo_beca">Tipo de Beca:</label>
-    <input type="text" name="tipo_beca" id="tipo_beca" value="<?= htmlspecialchars($app['tipo_beca'] ?? '') ?>" required>
+    <input type="text" name="tipo_beca" id="tipo_beca" value="<?= htmlspecialchars($app['tipo_beca'] ?? '') ?>" >
 
     <label for="motivo">Motivo de la Solicitud:</label>
-    <textarea name="motivo" id="motivo" required><?= htmlspecialchars($app['motivo'] ?? '') ?></textarea>
+    <textarea name="motivo" id="motivo"><?= htmlspecialchars($app['motivo'] ?? '') ?></textarea>
 
     <label for="monto_solicitado">Monto Solicitado:</label>
-    <input type="number" name="monto_solicitado" id="monto_solicitado" min="0" value="<?= htmlspecialchars($app['monto_solicitado'] ?? '') ?>" required>
+    <input type="number" name="monto_solicitado" id="monto_solicitado" min="0" value="<?= htmlspecialchars($app['monto_solicitado'] ?? '') ?>" >
 
     <label for="observaciones">Observaciones:</label>
     <textarea name="observaciones" id="observaciones"><?= htmlspecialchars($app['observaciones'] ?? '') ?></textarea>

@@ -35,10 +35,10 @@ INSERT INTO flujo_proceso (flujo, proceso, proceso_siguiente, tipo, pantalla, ro
 ('F1', 'P6',  NULL,  'C', 'aprobar_beca',        'administrador'),
 ('F1', 'P7',  'P8',  'P', 'seleccionar',         'administrador'),
 ('F1', 'P8',  'P9',  'P', 'enviar_seleccion',    'administrador'),
-('F1', 'P9',  'P10', 'P', 'evaluacion',          'evaluador'),
-('F1', 'P10', 'P12', 'P', 'estado_aprobado',     'evaluador'),
-('F1', 'P11', 'P12', 'P', 'estado_reprobado',    'evaluador'),
-('F1', 'P12', 'P13', 'P', 'guardar_fecha',       'evaluador'),
+('F1', 'P9',  'P10', 'P', 'evaluacion',          'administrador'),
+('F1', 'P10', 'P12', 'P', 'estado_aprobado',     'administrador'),
+('F1', 'P11', 'P12', 'P', 'estado_reprobado',    'administrador'),
+('F1', 'P12', 'P13', 'P', 'guardar_fecha',       'administrador'),
 ('F1', 'P13', NULL,  'S', 'anuncio',             'estudiante');
 
 INSERT INTO flujo_proceso (flujo, proceso, proceso_siguiente, tipo, pantalla, rol) VALUES

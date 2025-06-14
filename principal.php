@@ -12,6 +12,12 @@ $date = date('Y-m-d');
 $time = date('H:i:s');
 $sql_check = "SELECT * FROM flujo_proceso_seguimiento WHERE flujo='$flujo' AND proceso='$proceso' AND numero_tramite='$numero_tramite' AND usuario='$usuario' AND fecha_fin IS NULL";
 $res_check = mysqli_query($conexion_workflow, $sql_check);
+$res_check_array = mysqli_fetch_array($res_check);
+echo "query for inserting:<br><pre>";
+print_r($res_check_array);
+echo "</pre>";
+echo "a" . mysqli_num_rows($res_check) == 0;
+
 if (mysqli_num_rows($res_check) == 0) {
     $sql_insert = "INSERT INTO flujo_proceso_seguimiento (flujo, proceso, numero_tramite, usuario, fecha_inicio, hora_inicio) VALUES ('$flujo', '$proceso', '$numero_tramite', '$usuario', '$date', '$time')";
     mysqli_query($conexion_workflow, $sql_insert);
@@ -26,16 +32,23 @@ $pantalla = "procesos/" . $fila['pantalla'] . ".inc.php";
 $pantalla_main = "procesos/" . $fila['pantalla'] . ".main.inc.php";
 $proceso_siguiente = $fila['proceso_siguiente'];
 $proceso_anterior = $proceso;
+$tipo_actual = $fila['tipo'];
+$rol_siguiente = mysqli_query($conexion_workflow, "SELECT rol FROM workflow_proyecto.flujo_proceso WHERE flujo = '$flujo' AND proceso = '$proceso_siguiente'");
+$rol_siguiente = mysqli_fetch_array($rol_siguiente)['rol'];
+$rol_usuario = $_SESSION['rol'];
 
+echo $_SESSION['rol'] . " : $rol_siguiente " . " - Flujo: $flujo, Proceso: $proceso, Número de Trámite: $numero_tramite";
 ?>
 
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <title>Sistema de Becas - Flujo</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div class="container">
         <h1>Sistema de Becas</h1>
@@ -50,8 +63,17 @@ $proceso_anterior = $proceso;
             <?php include $pantalla; ?>
 
             <div class="button-group">
-                <button type="submit" name="anterior" id="atrasBtn">Atrás</button>
-                <button type="submit" name="siguiente" id="siguienteBtn">Siguiente</button>
+                <?php if ($tipo_actual === 'I' || $tipo_actual === 'C'): ?>
+                    <button type="submit" name="anterior" id="atrasBtn"><a href="./bandeja_entrada.php">Atrás</a></button>
+                    <button type="submit" name="siguiente" id="siguienteBtn">Siguiente</button>
+                <?php elseif ($tipo_actual === 'S' || $rol_siguiente !== $rol_usuario): ?>
+                    <button type="submit" name="anterior" id="atrasBtn">Atrás</button>
+                    <button name="siguiente" id="siguienteBtn"><a href="./bandeja_entrada.php">Siguiente</a></button>
+                <?php else: ?>
+                    <button type="submit" name="anterior" id="atrasBtn">Atrás</button>
+                    <button name="siguiente" id="siguienteBtn">Siguiente</button>
+                <?php endif; ?>
+
             </div>
         </form>
     </div>
@@ -68,4 +90,5 @@ $proceso_anterior = $proceso;
         document.getElementById('procesoInput').value = procesoSiguiente;
     </script>
 </body>
+
 </html>

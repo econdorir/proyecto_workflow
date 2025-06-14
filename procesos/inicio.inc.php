@@ -7,5 +7,5 @@
     <label for="contrasena">Contraseña:</label>
     <input type="password" name="contrasena" id="contrasena" placeholder="Tu contraseña" required>
 
-    <p>Por favor, ingresa tus credenciales para iniciar sesión.</p>
+    <p>Por favor vuelve a ingresar tus credenciales para iniciar la solicitud de tu beca.</p>
 </div>

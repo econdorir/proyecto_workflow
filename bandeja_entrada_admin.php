@@ -69,7 +69,7 @@ $resultado = mysqli_query($conexion_workflow, $sql);
 
 <body>
     <div class="container">
-        <h2>Bandeja de Entrada</h2>
+        <h2>Bandeja de Entrada de Administrador</h2>
         <div class="btn-group">
             <button class="btn" onclick="mostrarNuevoFlujo()">+ Nuevo</button>
             <a href="./login.php" class="btn">Cerrar Sesión</a>
@@ -82,12 +82,10 @@ $resultado = mysqli_query($conexion_workflow, $sql);
             <select name="flujo" id="flujo" required>
                 <?php if ($rol === 'estudiante'): ?>
                     <option value="F1">Solicitud de Beca</option>
-                    <option value="F3">Renovación de Beca</option>
                 <?php elseif ($rol === 'evaluador'): ?>
                     <option value="F4">Evaluación de Solicitudes</option>
                 <?php elseif ($rol === 'administrador'): ?>
                     <option value="F2">Creación de convocatoria</option>
-                    <option value="F5">Reportes</option>
                 <?php else: ?>
                     <option value="">No hay flujos disponibles</option>
                 <?php endif; ?>
@@ -119,7 +117,7 @@ $resultado = mysqli_query($conexion_workflow, $sql);
                         <?php if ($puede_editar): ?>
                             <a href="principal.php?flujo=<?= urlencode($flujo) ?>&proceso=<?= urlencode($proceso) ?>&numero_tramite=<?= urlencode($fila['numero_tramite']) ?>">Editar</a>
                         <?php else: ?>
-                            <span style="color: gray;">Sin acceso</span>
+                            <span style="color: gray;">En proceso</span>
                         <?php endif; ?>
                     </td>
 
