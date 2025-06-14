@@ -47,7 +47,8 @@ INSERT INTO flujo_proceso (flujo, proceso, proceso_siguiente, tipo, pantalla, ro
 ('F2', 'P3', 'P4', 'P', 'form_convocatoria', 'administrador'),
 ('F2', 'P4', 'P5', 'P', 'confirmar_convocatoria', 'administrador'),
 ('F2', 'P5', NULL,  'C', 'aprobar_convocatoria', 'administrador'),
-('F2', 'P6', NULL,  'S', 'anuncio_convocatoria', 'estudiante');
+('F2', 'P6', 'P7',  'P', 'anunciar', 'administrador'),
+('F2', 'P7', NULL,  'S', 'anuncio_convocatoria', 'estudiante');
 
 
 

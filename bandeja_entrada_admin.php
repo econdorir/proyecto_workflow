@@ -32,9 +32,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['flujo']) && isset($_GET
 
 // Rango permitido de procesos por rol
 $rango_flujo_proceso = [
-    'estudiante' => ['F1' => ['P1', 'P2', 'P3', 'P4', 'P13'], 'F3' => ['P1', 'P2']], // ajusta según tu lógica
-    'administrador' => ['F1' => ['P5', 'P6'], 'F2' => ['P1', 'P2'], 'F5' => ['P1']],
-    'evaluador' => ['F1' => ['P9', 'P10', 'P11', 'P12', 'P13'], 'F4' => ['P1', 'P2']]
+    'estudiante' => ['F1' => ['P1', 'P2', 'P3', 'P4', 'P13'], 'F2' => ['P7']], 
+    'administrador' => ['F1' => ['P5', 'P6', 'P7', 'P8', 'P9', 'P9', 'P10', 'P11', 'P12'], 'F2' => ['P1', 'P2', 'P3', 'P4', 'P5', 'P6']],
 ];
 
 

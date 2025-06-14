@@ -73,9 +73,9 @@ echo $_SESSION['rol'] . " : $rol_siguiente " . " - Flujo: $flujo, Proceso: $proc
                     <button type="submit" name="anterior" id="atrasBtn">Atrás</button>
                     <button name="siguiente" id="siguienteBtn">Siguiente</button>
                 <?php endif; ?>
-
             </div>
         </form>
+        
     </div>
     <script>
         const procesoSiguiente = "<?php echo $proceso_siguiente; ?>";
