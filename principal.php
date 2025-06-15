@@ -58,6 +58,8 @@ echo $_SESSION['rol'] . " : $rol_siguiente " . " - Flujo: $flujo, Proceso: $proc
             <input type="hidden" name="proceso" id="procesoInput" value="">
             <input type="hidden" name="proceso_anterior" value="<?php echo $proceso_anterior; ?>">
             <input type="hidden" name="numero_tramite" value="<?php echo $numero_tramite; ?>">
+            <input type="hidden" name="rol_usuario" value="<?php echo $rol_usuario; ?>">
+            <input type="hidden" name="rol_siguiente" value="<?php echo $rol_siguiente; ?>">
 
             <?php include $pantalla_main; ?>
             <?php include $pantalla; ?>
@@ -66,8 +68,8 @@ echo $_SESSION['rol'] . " : $rol_siguiente " . " - Flujo: $flujo, Proceso: $proc
                 <?php if ($tipo_actual === 'I' || $tipo_actual === 'C'): ?>
                     <button type="submit" name="anterior" id="atrasBtn"><a href="./bandeja_entrada.php">Atrás</a></button>
                     <button type="submit" name="siguiente" id="siguienteBtn">Siguiente</button>
-                <?php elseif ($tipo_actual === 'S' || $rol_siguiente !== $rol_usuario): ?>
-                    <button type="submit" name="anterior" id="atrasBtn">Atrás</button>
+                <?php elseif ($tipo_actual === 'S' ): ?>
+                    <button type="submit" name="anterior" id="atrasBtn">Enviar</button>
                     <button name="siguiente" id="siguienteBtn"><a href="./bandeja_entrada.php">Siguiente</a></button>
                 <?php else: ?>
                     <button type="submit" name="anterior" id="atrasBtn">Atrás</button>
@@ -75,7 +77,11 @@ echo $_SESSION['rol'] . " : $rol_siguiente " . " - Flujo: $flujo, Proceso: $proc
                 <?php endif; ?>
             </div>
         </form>
-        
+        <?php if ($rol_usuario == 'estudiante'): ?>
+            <a href="./bandeja_entrada.php">Volver a la bandeja de entrada</a>
+        <?php elseif ($rol_usuario == 'administrador'): ?>
+            <a href="./bandeja_entrada_admin.php">Volver a la bandeja de entrada</a>
+        <?php endif; ?>
     </div>
     <script>
         const procesoSiguiente = "<?php echo $proceso_siguiente; ?>";

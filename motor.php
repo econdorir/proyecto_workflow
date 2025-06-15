@@ -7,6 +7,9 @@ $proceso = $_GET['proceso_anterior'] ?? 'P1';
 $proceso_siguiente = $_GET['proceso'] ?? 'P2';
 $numero_tramite = $_GET['numero_tramite'] ?? 3001;
 $usuario = $_SESSION['usuario'] ?? 'msilva';
+$rol_usuario = $_GET['rol_usuario'] ?? '';
+$rol_siguiente = $_GET['rol_siguiente'] ?? '';
+
 
 // Obtener pantalla del proceso actual
 $sql = "SELECT * FROM workflow_proyecto.flujo_proceso WHERE flujo = '$flujo' AND proceso = '$proceso'";
@@ -37,4 +40,31 @@ mysqli_query($conexion_workflow, $sql_update);
 
 // TODO: agregar condición condicional si el proceso actual tiene bifurcación
 
-header("Location: principal.php?flujo=$flujo&proceso=$proceso_siguiente&numero_tramite=$numero_tramite");
+
+//Si el siguiente usuario es diferente, 
+//entonces terminamos el proceso actual, iniciamos 
+//el siguiente y volvemos a la bandeja de entrada
+
+// if ($rol_usuario !== $rol_siguiente) {
+//     $date = date('Y-m-d');
+//     $time = date('H:i:s');
+//     $sql_update = "UPDATE flujo_proceso_seguimiento SET fecha_fin='$date', hora_fin='$time' WHERE flujo='$flujo' AND proceso='$proceso' AND numero_tramite='$numero_tramite' AND usuario='$usuario' AND fecha_fin IS NULL";
+//     mysqli_query($conexion_workflow, $sql_update);
+
+//     $date = date('Y-m-d');
+//     $time = date('H:i:s');
+//     // $usuario = $_SESSION['usuario'];
+//     $sql_insert = "INSERT INTO flujo_proceso_seguimiento (flujo, proceso, numero_tramite, usuario, fecha_inicio, hora_inicio) VALUES ('$flujo', '$proceso_siguiente', '$numero_tramite', '$usuario', '$date', '$time')";
+//     mysqli_query($conexion_workflow, $sql_insert);
+
+
+//     if ($rol_usuario == 'estudiante') {
+//         header("Location: bandeja_entrada.php");
+//         // echo "estudiante bandeja";
+//     } else {
+//         header("Location: bandeja_entrada_admin.php");
+//         // echo "admin bandeja :D";
+//     }
+// } else {
+    header("Location: principal.php?flujo=$flujo&proceso=$proceso_siguiente&numero_tramite=$numero_tramite");
+// }

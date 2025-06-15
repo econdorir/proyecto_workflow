@@ -126,7 +126,7 @@ $resultado = mysqli_query($conexion_workflow, $sql);
                         <?php if ($puede_editar): ?>
                             <a href="principal.php?flujo=<?= urlencode($flujo) ?>&proceso=<?= urlencode($proceso) ?>&numero_tramite=<?= urlencode($fila['numero_tramite']) ?>">Editar</a>
                         <?php else: ?>
-                            <span style="color: gray;">Sin acceso</span>
+                            <span style="color: gray;">En proceso</span>
                         <?php endif; ?>
                     </td>
 
