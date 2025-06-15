@@ -45,10 +45,11 @@ mysqli_query($conexion_workflow, $sql_update);
 //entonces terminamos el proceso actual, iniciamos 
 //el siguiente y volvemos a la bandeja de entrada
 
-echo "<h2>Flujo: $flujo, Proceso: $proceso, Proceso Siguiente: $proceso_siguiente, Número de Trámite: $numero_tramite</h2>";
+$tipo_proceso = $fila['tipo'];
+echo "<h2>Flujo: $flujo, Proceso: $proceso, Proceso Siguiente: $proceso_siguiente, Número de Trámite: $numero_tramite, Tipo Proceso: $tipo_proceso</h2>";
 echo "Boton atras presionado: " . (isset($_GET['anterior']) ? 'Sí' : 'No') . "<br>";
 
-if ($rol_usuario !== $rol_siguiente AND !isset($_GET['anterior'])) {
+if ($rol_usuario !== $rol_siguiente AND !isset($_GET['anterior']) AND $tipo_proceso !== 'C') {
     // $usuario = $_SESSION['usuario'];
     $sql_insert = "INSERT INTO flujo_proceso_seguimiento (flujo, proceso, numero_tramite, usuario, fecha_inicio, hora_inicio) VALUES ('$flujo', '$proceso_siguiente', '$numero_tramite', '$usuario', '$date', '$time')";
     mysqli_query($conexion_workflow, $sql_insert);
