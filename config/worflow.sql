@@ -46,7 +46,7 @@ INSERT INTO flujo_proceso (flujo, proceso, proceso_siguiente, tipo, pantalla, ro
 ('F2', 'P2', 'P3', 'P', 'nombre_convocatoria', 'administrador'),
 ('F2', 'P3', 'P4', 'P', 'form_convocatoria', 'administrador'),
 ('F2', 'P4', 'P5', 'P', 'confirmar_convocatoria', 'administrador'),
-('F2', 'P5', NULL,  'C', 'aprobar_convocatoria', 'administrador'),
+('F2', 'P5', 'P6',  'p', 'aprobar_convocatoria', 'administrador'),
 ('F2', 'P6', 'P7',  'P', 'anunciar', 'administrador'),
 ('F2', 'P7', NULL,  'S', 'anuncio_convocatoria', 'estudiante');
 
@@ -56,8 +56,8 @@ INSERT INTO flujo_proceso (flujo, proceso, proceso_siguiente, tipo, pantalla, ro
 INSERT INTO flujo_proceso_condicionante (flujo, proceso, proceso_si, proceso_no) VALUES
 ('F1', 'P6',  'P7',  'P11');
 
-INSERT INTO flujo_proceso_condicionante (flujo, proceso, proceso_si, proceso_no) VALUES
-('F2', 'P5',  'P6',  'P3');
+-- INSERT INTO flujo_proceso_condicionante (flujo, proceso, proceso_si, proceso_no) VALUES
+-- ('F2', 'P5',  'P6',  'P3');
 
 
 INSERT INTO flujo_proceso_seguimiento (flujo, proceso, numero_tramite, usuario, fecha_inicio, hora_inicio, fecha_fin, hora_fin) VALUES

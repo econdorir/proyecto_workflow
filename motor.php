@@ -56,10 +56,10 @@ if ($rol_usuario !== $rol_siguiente AND !isset($_GET['anterior']) AND $tipo_proc
     echo "ntramos :O";
 
     if ($rol_usuario == 'estudiante') {
-        // header("Location: bandeja_entrada.php");
+        header("Location: bandeja_entrada.php");
         // echo "estudiante bandeja";
     } else {
-        // header("Location: bandeja_entrada_admin.php");
+        header("Location: bandeja_entrada_admin.php");
         // echo "admin bandeja :D";
     }
 } else {

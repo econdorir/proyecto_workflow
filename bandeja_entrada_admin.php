@@ -14,15 +14,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['flujo']) && isset($_GET
     $flujo = $_GET['flujo'];
     $proceso = 'P1';
 
-    // Asignar número de trámite según flujo
-    $numero_tramite = match ($flujo) {
-        'F1' => 3001,
-        'F2' => 5001,
-        default => 9999
-    };
+    // Obtener el mayor numero_tramite para el flujo seleccionado
+    $sql_max = "SELECT MAX(numero_tramite) AS max_tramite FROM flujo_proceso_seguimiento WHERE flujo = ?";
+    $stmt_max = mysqli_prepare($conexion_workflow, $sql_max);
+    mysqli_stmt_bind_param($stmt_max, 's', $flujo);
+    mysqli_stmt_execute($stmt_max);
+    $res_max = mysqli_stmt_get_result($stmt_max);
+    $row_max = mysqli_fetch_assoc($res_max);
+    $max_tramite = $row_max['max_tramite'] ?? 0;
+    $nuevo_tramite = $max_tramite ? $max_tramite + 1 : 3001;
+    mysqli_stmt_close($stmt_max);
+
+    // Insertar nuevo registro en flujo_proceso_seguimiento
+    $fecha = date('Y-m-d');
+    $hora = date('H:i:s');
+    $sql_insert = "INSERT INTO flujo_proceso_seguimiento (flujo, proceso, numero_tramite, usuario, fecha_inicio, hora_inicio) VALUES (?, ?, ?, ?, ?, ?)";
+    $stmt = mysqli_prepare($conexion_workflow, $sql_insert);
+    mysqli_stmt_bind_param($stmt, 'ssisss', $flujo, $proceso, $nuevo_tramite, $usuario, $fecha, $hora);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
 
     // Redirigir a principal.php con los parámetros
-    header("Location: principal.php?flujo=$flujo&proceso=$proceso&numero_tramite=$numero_tramite");
+    header("Location: principal.php?flujo=$flujo&proceso=$proceso&numero_tramite=$nuevo_tramite");
     exit;
 }
 

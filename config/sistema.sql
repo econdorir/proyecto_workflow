@@ -155,6 +155,19 @@ CREATE TABLE item (
     FOREIGN KEY (aplicacion_id) REFERENCES aplicacion(id)
 );
 
+CREATE TABLE convocatoria (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre_beca VARCHAR(100),
+    descripcion TEXT,
+    fecha_inicio DATE,
+    fecha_fin DATE,
+    requisitos TEXT,
+    monto DECIMAL(10, 2)
+);
+
+
+
+
 
 INSERT INTO aplicacion (numero_tramite, estudiante_id, beca_id, estado, observaciones)
 VALUES
@@ -213,3 +226,11 @@ VALUES
 ('20231010', 'Fernando', 'Gómez', '88990011', 'fernando.gomez@universidad.edu', '988990011', 'Jr. Tarapacá 999', 'Medicina', 4, 'fgomez', '$2y$10$LBYeTJEJMxCAGmf5psr2SOIqf8uHU0JrB4pqs4QLWMtZHzHxw0iKO'),
 ('20231011', 'Paula', 'Huanca', '99001122', 'paula.huanca@universidad.edu', '999001122', 'Calle Los Pinos 18', 'Educación Inicial', 3, 'phuanca', '$2y$10$LBYeTJEJMxCAGmf5psr2SOIqf8uHU0JrB4pqs4QLWMtZHzHxw0iKO'),
 ('20231012', 'Renzo', 'Ticona', '10111213', 'renzo.ticona@universidad.edu', '910111213', 'Av. La Cultura 456', 'Ingeniería Ambiental', 7, 'rticona', '$2y$10$LBYeTJEJMxCAGmf5psr2SOIqf8uHU0JrB4pqs4QLWMtZHzHxw0iKO');
+
+INSERT INTO convocatoria (nombre_beca, descripcion, fecha_inicio, fecha_fin, requisitos, monto)
+VALUES 
+('Beca Excelencia Académica', 'Dirigida a estudiantes con alto rendimiento académico.', '2025-06-01', '2025-07-15', 'Promedio mínimo de 9.0', 15000.00),
+('Beca Deportiva', 'Apoyo económico a estudiantes destacados en deportes.', '2025-05-20', '2025-07-01', 'Ser parte de un equipo deportivo institucional', 12000.00),
+('Beca Cultural', 'Fomento a la participación en actividades culturales.', '2025-06-10', '2025-08-01', 'Participar en talleres o grupos culturales', 8000.00),
+('Beca de Movilidad Internacional', 'Para estudiantes que realicen intercambios académicos.', '2025-06-05', '2025-07-30', 'Carta de aceptación de universidad extranjera', 25000.00),
+('Beca de Apoyo Económico', 'Apoyo a estudiantes con situación económica vulnerable.', '2025-05-15', '2025-07-10', 'Estudio socioeconómico aprobado', 10000.00);
