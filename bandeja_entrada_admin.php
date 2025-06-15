@@ -18,9 +18,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['flujo']) && isset($_GET
     $numero_tramite = match ($flujo) {
         'F1' => 3001,
         'F2' => 5001,
-        'F3' => 4001,
-        'F4' => 6001,
-        'F5' => 7001,
         default => 9999
     };
 

@@ -8,8 +8,7 @@ $contrasena = $_GET['contrasena'] ?? '';
 // Lista de roles y sus respectivas tablas
 $roles = [
     'estudiante' => 'estudiante',
-    'administrador' => 'administrador',
-    'evaluador' => 'evaluador'
+    'administrador' => 'administrador'
 ];
 
 foreach ($roles as $rol => $tabla) {

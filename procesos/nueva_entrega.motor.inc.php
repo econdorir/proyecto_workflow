@@ -11,7 +11,7 @@ $fila = mysqli_fetch_assoc($resultado);
 
 if (!$fila) {
     // Si no hay, crear una nueva aplicación
-    $numero_tramite = 3000 + $estudiante_id;
+    $numero_tramite = $_GET['numero_tramite'];
     $sql_insert = "INSERT INTO aplicacion (numero_tramite, estudiante_id, estado, observaciones)
                    VALUES ($numero_tramite, $estudiante_id, 'en_proceso', 'Nueva postulación iniciada')";
     mysqli_query($conexion_sistema, $sql_insert);

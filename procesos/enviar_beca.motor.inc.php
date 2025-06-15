@@ -7,7 +7,7 @@ include __DIR__ . '/../conexion.inc.php';
 $success = false;
 if (isset($_GET['siguiente'])) {
     $estudiante_id = $_SESSION['id'];
-    $numero_tramite = $_SESSION['numero_tramite'];
+    $numero_tramite = $_GET['numero_tramite'];
     $tipo_beca = $_SESSION['tipo_beca'] ?? '';
     $motivo = $_SESSION['motivo'] ?? '';
     $monto_solicitado = $_SESSION['monto_solicitado'] ?? 0;
@@ -19,6 +19,8 @@ if (isset($_GET['siguiente'])) {
         $success = true;
     }
     mysqli_stmt_close($stmt);
+    echo "num en el motor aqui" . $numero_tramite;
+
 }
 ?>
 <?php if ($success): ?>

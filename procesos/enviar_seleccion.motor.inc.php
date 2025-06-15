@@ -6,7 +6,7 @@ include __DIR__ . '/../conexion.inc.php';
 
 $success = false;
 if (isset($_GET['siguiente'])) {
-    $numero_tramite = $_SESSION['numero_tramite'];
+    $numero_tramite = $_GET['numero_tramite'];
     $anio_inicio = $_SESSION['anio_inicio'] ?? '';
     $anio_fin = $_SESSION['anio_fin'] ?? '';
     $semestre_inicio = $_SESSION['semestre_inicio'] ?? '';

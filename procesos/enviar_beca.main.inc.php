@@ -5,7 +5,8 @@ if (session_status() === PHP_SESSION_NONE) {
 include __DIR__ . '/../conexion.inc.php';
 
 $id = $_SESSION['id'];
-$numero_tramite = $_SESSION['numero_tramite'];
+$numero_tramite = $_GET['numero_tramite'];
+echo "num en el main aqui" . $numero_tramite;
 
 // Get student name
 $sql = "SELECT CONCAT(nombre, ' ', apellido) AS nombre_completo FROM estudiante WHERE id = $id";

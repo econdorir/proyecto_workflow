@@ -6,7 +6,7 @@ include __DIR__ . '/../conexion.inc.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $estudiante_id = $_SESSION['id'];
-    $numero_tramite = $_SESSION['numero_tramite'];
+    $numero_tramite = $_GET['numero_tramite'];
     $tipo_beca = $_POST['tipo_beca'] ?? '';
     $motivo = $_POST['motivo'] ?? '';
     $monto_solicitado = $_POST['monto_solicitado'] ?? 0;

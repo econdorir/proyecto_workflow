@@ -6,7 +6,7 @@ include __DIR__ . '/../conexion.inc.php';
 
 $success = false;
 if (isset($_GET['siguiente'])) {
-    $numero_tramite = $_SESSION['numero_tramite'];
+    $numero_tramite = $_GET['numero_tramite'];
     if (!empty($_SESSION['confirm_aprobado'])) {
         $sql = "UPDATE aplicacion SET estado = 'aprobado' WHERE numero_tramite = ?";
         $stmt = mysqli_prepare($conexion_sistema, $sql);

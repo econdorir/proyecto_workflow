@@ -6,7 +6,7 @@ include __DIR__ . '/../conexion.inc.php';
 
 $success = false;
 if (isset($_GET['siguiente'])) {
-    $numero_tramite = $_SESSION['numero_tramite'];
+    $numero_tramite = $_GET['numero_tramite'];
     $fecha_aprobacion = $_SESSION['fecha_aprobacion'] ?? '';
     if (!empty($fecha_aprobacion)) {
         $sql = "UPDATE aplicacion SET fecha_aprobacion = ? WHERE numero_tramite = ?";
