@@ -5,16 +5,16 @@
     <div><?= htmlspecialchars($app['tipo_beca'] ?? '') ?></div>
 
     <label>Año de inicio:</label>
-    <input type="number" name="anio_inicio" id="anio_inicio" min="2000" max="2100" required>
+    <input type="number" name="anio_inicio" id="anio_inicio" min="2000" max="2100" >
 
     <label>Año de fin:</label>
-    <input type="number" name="anio_fin" id="anio_fin" min="2000" max="2100" required>
+    <input type="number" name="anio_fin" id="anio_fin" min="2000" max="2100" >
 
     <label>Semestre de inicio:</label>
-    <input type="text" name="semestre_inicio" id="semestre_inicio" placeholder="Ej: 2024-I" required>
+    <input type="text" name="semestre_inicio" id="semestre_inicio" placeholder="Ej: 2024-I" >
 
     <label>Semestre de fin:</label>
-    <input type="text" name="semestre_fin" id="semestre_fin" placeholder="Ej: 2025-II" required>
+    <input type="text" name="semestre_fin" id="semestre_fin" placeholder="Ej: 2025-II" >
 </div>
 <script>
 ['anio_inicio','anio_fin','semestre_inicio','semestre_fin'].forEach(function(id) {

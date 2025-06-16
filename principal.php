@@ -6,7 +6,8 @@ $usuario = $_SESSION['usuario']; // usuario de prueba por ahora
 $flujo = $_GET['flujo'];
 $proceso = $_GET['proceso'];
 $numero_tramite = $_GET['numero_tramite'];
-
+echo $_SESSION['aprobado'] ?? 'no hay data de aprobado';
+echo "<br>";
 // Insert into flujo_proceso_seguimiento if not already present for this step
 $date = date('Y-m-d');
 $time = date('H:i:s');
@@ -34,7 +35,7 @@ $proceso_siguiente = $fila['proceso_siguiente'];
 $proceso_anterior = $proceso;
 $tipo_actual = $fila['tipo'];
 $rol_siguiente = mysqli_query($conexion_workflow, "SELECT rol FROM workflow_proyecto.flujo_proceso WHERE flujo = '$flujo' AND proceso = '$proceso_siguiente'");
-$rol_siguiente = mysqli_fetch_array($rol_siguiente)['rol'];
+$rol_siguiente = mysqli_fetch_array($rol_siguiente)['rol'] ?? '';
 $rol_usuario = $_SESSION['rol'];
 
 echo $_SESSION['rol'] . " : $rol_siguiente " . " - Flujo: $flujo, Proceso: $proceso, Número de Trámite: $numero_tramite";
@@ -65,12 +66,12 @@ echo $_SESSION['rol'] . " : $rol_siguiente " . " - Flujo: $flujo, Proceso: $proc
             <?php include $pantalla; ?>
 
             <div class="button-group">
-                <?php if ($tipo_actual === 'I' || $tipo_actual === 'C'): ?>
-                    <button type="submit" name="anterior" id="atrasBtn"><a href="./bandeja_entrada.php">Atrás</a></button>
+                <?php if ($tipo_actual === 'I' || ($flujo === 'F1' && $proceso === 'P5')): ?>
+                    <button type="submit" name="anterior" id="atrasBtn" style="display:none" disabled><a href="<?php echo ($rol_usuario == 'estudiante') ? './bandeja_entrada.php' : './bandeja_entrada_admin.php'; ?>" style="display: block; width: 100%; height: 100%; text-decoration: none; color: white;">Atrás</a></button>
                     <button type="submit" name="siguiente" id="siguienteBtn">Siguiente</button>
-                <?php elseif ($tipo_actual === 'S' ): ?>
-                    <button type="submit" name="anterior" id="atrasBtn">Enviar</button>
-                    <button name="siguiente" id="siguienteBtn"><a href="./bandeja_entrada.php">Siguiente</a></button>
+                <?php elseif ($tipo_actual === 'S'): ?>
+                    <button type="submit" name="anterior" id="atrasBtn" style="display: none;" disabled>Atras</button>
+                    <button disabled style="display:none"><a href="<?php echo ($rol_usuario == 'estudiante') ? './bandeja_entrada.php' : './bandeja_entrada_admin.php'; ?>" style="display: block; width: 100%; height: 100%; text-decoration: none; color: white;">Terminar</a></button>
                 <?php else: ?>
                     <button type="submit" name="anterior" id="atrasBtn">Atrás</button>
                     <button name="siguiente" id="siguienteBtn">Siguiente</button>

@@ -48,7 +48,7 @@ $rango_flujo_proceso = [
 
 
 // Obtener procesos pendientes para la bandeja
-$sql = "SELECT * FROM flujo_proceso_seguimiento WHERE hora_fin IS NULL";
+$sql = "SELECT * FROM flujo_proceso_seguimiento WHERE hora_fin IS NULL GROUP BY numero_tramite, flujo, proceso";
 $resultado = mysqli_query($conexion_workflow, $sql);
 ?>
 

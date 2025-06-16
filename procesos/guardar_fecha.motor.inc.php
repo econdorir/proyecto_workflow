@@ -31,6 +31,8 @@ mysqli_stmt_close($stmt);
 if ($usuario_encontrado) {
     $_SESSION['usuario'] = $usuario_encontrado;
 }
+$sql_insert_a = "INSERT INTO flujo_proceso_seguimiento (flujo, proceso, numero_tramite, usuario, fecha_inicio, hora_inicio) VALUES ('$flujo', '$proceso_siguiente', '$numero_tramite', '$usuario_encontrado', '$date', '$time')";
+mysqli_query($conexion_workflow, $sql_insert_a);
 
 
 ?>

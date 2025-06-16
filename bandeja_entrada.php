@@ -54,14 +54,24 @@ $sql = "
         FROM flujo_proceso_seguimiento 
         WHERE usuario = '$usuario' 
         AND hora_fin IS NULL
+        
     )
     UNION
     (
         SELECT * 
         FROM flujo_proceso_seguimiento 
         WHERE flujo = 'F2' AND proceso = 'P7'
+        GROUP BY numero_tramite, flujo, proceso
+    )
+    UNION
+    (
+        SELECT *
+        FROM flujo_proceso_seguimiento 
+        WHERE flujo = 'F1' AND proceso = 'P13'
+        GROUP BY numero_tramite, flujo, proceso
     )
 ";
+
 
 $resultado = mysqli_query($conexion_workflow, $sql);
 ?>

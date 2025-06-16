@@ -24,4 +24,6 @@ if (isset($_GET['siguiente'])) {
         $_SESSION['proximo_proceso'] = $proceso_siguiente;
     }
 }
+
+// $_SESSION['camino'] = 
 ?> 
